@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>반응형 웹페이지</title>
+        <meta name="viewport" content="user-scalable=no,initial scale=1,maximum-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
+
+        <style>
+
+            body {
+                margin: 0;
+                padding: 0;
+                background-color: #7a2a35;
+                font-family: 'IM Fell English', serif;
+            }
+
+            .card {
+                margin: 100px auto;
+                padding: 40px 40px;
+                max-width: 600px;
+                background: #f3e2d3;
+                border-radius: 20px;
+                box-shadow: 0 3px 20px rgb(254, 172, 172);
+            }
+
+            .title {
+                font-size: 20px;
+                font-weight: bold;
+                color: #2c1a1e;
+                text-align: center;
+                margin-bottom: 5px;
+            }
+            
+            .title_k {
+                font-size: 12px;
+                font-style: italic;
+                color: gray;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .text {
+                font-size: 12px;
+                color: #2c1a1e;
+                margin-top: 20px;
+                text-align: left;
+            }
+
+            .author {
+                font-size: 12px;
+                font-style: italic;
+                color: gray;
+                text-align: right;
+            }
+
+            .divide {
+                display: grid; /*float 오류로 대신에 grid 사용*/
+                grid-template-columns: 1fr 1px 1fr;
+                gap: 0 20px;
+            }
+
+            .line {
+                background: #c8b8b8;
+                margin-top: 20px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <div class="card">
+            <div class="title">Я тебя отвоюю y всех земель</div>
+            <div class="title_k">당신을 모든 땅에서 되찾으리</div>
+            <hr>
+
+            <div class="divide">                  
+                <div class="text">
+                    Я тебя отвоюю y всех земель, y всех небес,<br>
+                    <br>
+                    Оттого что лес — моя колыбель, и могила — лес,<br>
+                    <br>
+                    Оттого что я на земле стою — лишь одной ногой,<br>
+                    <br>
+                    Оттого что я тебе спою — как никто другой.
+                </div>
+
+                <div class="line"></div>          
+
+                <div class="text">
+                    나는 당신을 모든 땅에서, 모든 하늘에서 되찾으리,<br>
+                    <br>
+                    왜냐하면 숲은 나의 요람이고, 숲은 나의 무덤이기에,<br>
+                    <br>
+                    왜냐하면 나는 이 땅 위에 한 발로만 서 있기에,<br>
+                    <br>
+                    왜냐하면 나는 당신에게 노래하리 — 그 누구도 할 수 없는 방식으로.
+                </div>
+            </div>                                   
+            
+            <br>
+            <div class="author">— Marina Tsvetaeva</div>
+        </div>
+    </body>
+</html>
