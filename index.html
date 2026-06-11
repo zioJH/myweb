@@ -14,8 +14,8 @@
             .card {
                 margin: 100px auto;
                 padding: 40px 40px;
-                max-width: 500px;
-                background: #f5f0eb;
+                max-width: 600px;
+                background: #f3e2d3;
                 border-radius: 20px;
             }
 
@@ -43,10 +43,21 @@
             }
 
             .author {
-                font-size: 10px;
+                font-size: 12px;
                 font-style: italic;
                 color: gray;
                 text-align: right;
+            }
+
+            .divide {
+                display: grid; /*float 오류로 대신에 grid 사용*/
+                grid-template-columns: 1fr 1px 1fr;
+                gap: 0 20px;
+            }
+
+            .line {
+                background: #c8b8b8;
+                margin-top: 20px;
             }
 
         </style>
@@ -58,19 +69,29 @@
             <div class="title_k">당신을 모든 땅에서 되찾으리</div>
             <hr>
 
-            <div class="text">
-                Я тебя отвоюю y всех земель, y всех небес,<br>
-                Оттого что лес — моя колыбель, и могила — лес,<br>
-                Оттого что я на земле стою — лишь одной ногой,<br>
-                Оттого что я тебе спою — как никто другой.
-            </div>
+            <div class="divide">                  
+                <div class="text">
+                    Я тебя отвоюю y всех земель, y всех небес,<br>
+                    <br>
+                    Оттого что лес — моя колыбель, и могила — лес,<br>
+                    <br>
+                    Оттого что я на земле стою — лишь одной ногой,<br>
+                    <br>
+                    Оттого что я тебе спою — как никто другой.
+                </div>
 
-            <div class="text">
-                나는 당신을 모든 땅에서, 모든 하늘에서 되찾으리,<br>
-                왜냐하면 숲은 나의 요람이고, 숲은 나의 무덤이기에,<br>
-                왜냐하면 나는 이 땅 위에 한 발로만 서 있기에,<br>
-                왜냐하면 나는 당신에게 노래하리 — 그 누구도 할 수 없는 방식으로.
-            </div>
+                <div class="line"></div>          
+
+                <div class="text">
+                    나는 당신을 모든 땅에서, 모든 하늘에서 되찾으리,<br>
+                    <br>
+                    왜냐하면 숲은 나의 요람이고, 숲은 나의 무덤이기에,<br>
+                    <br>
+                    왜냐하면 나는 이 땅 위에 한 발로만 서 있기에,<br>
+                    <br>
+                    왜냐하면 나는 당신에게 노래하리 — 그 누구도 할 수 없는 방식으로.
+                </div>
+            </div>                                   
             
             <br>
             <div class="author">— Marina Tsvetaeva</div>
