@@ -1,968 +1,365 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Art Monster</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
-        <!-- Bootstrap Icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Google fonts-->
-        <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet" />
-        <link href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic" rel="stylesheet" type="text/css" />
-        <!-- SimpleLightbox plugin CSS-->
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="css/styles.css" rel="stylesheet" />
+<html lang="ko">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>BEER NAME 01 – Art Monster</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700" rel="stylesheet"/>
+    <link href="css/styles.css" rel="stylesheet"/>
+    <style>
+        * { box-sizing: border-box; }
+        body { background:#0d0d0d; color:#fff; margin:0; font-family:'Merriweather Sans', sans-serif; }
+        a { text-decoration:none; }
 
-        <style>
-            body { background-color: #000 !important; color: #fff; }
-            .btn-primary { background-color: #8B1A1A !important; border-color: #8B1A1A !important; }
-            .btn-primary:hover { background-color: #6e1414 !important; }
-            #mainNav.navbar-shrink { background-color: #0000006a !important; }
+        /* 히어로 */
+        .hero {
+            min-height:100vh; display:flex; align-items:center;
+            background: linear-gradient(135deg, #9B1C31 0%, #373636 100%);
+            padding: 6rem 0 3rem;
+            position:relative; overflow:hidden;
+        }
+        .hero::before {
+            content:'01';
+            position:absolute; right:4rem; bottom:-2rem;
+            font-size:20rem; font-weight:900;
+            color:rgba(255,255,255,0.04); line-height:1;
+            pointer-events:none;
+        }
+        .hero-inner {
+            max-width:1200px; margin:0 auto; padding:0 4rem;
+            display:flex; align-items:center; gap:6rem; width:100%;
+        }
+        .hero-text { flex:1; }
+        .hero-text .label {
+            font-size:0.7rem; letter-spacing:4px; text-transform:uppercase;
+            color:rgba(255,255,255,0.5); margin-bottom:1rem;
+        }
+        .hero-text h1 {
+            font-size:5rem; font-weight:900; line-height:1; margin:0 0 1.5rem;
+        }
+        .hero-text .style-tag {
+            display:inline-block; border:1px solid rgba(255,255,255,0.3);
+            padding:0.4rem 1.2rem; font-size:0.8rem; letter-spacing:2px;
+            text-transform:uppercase; color:rgba(255,255,255,0.7); margin-bottom:2rem;
+        }
+        .hero-text .tagline {
+            font-size:1.1rem; color:rgba(255,255,255,0.65); line-height:1.8; max-width:420px;
+        }
+        .hero-img { flex:1; text-align:center; }
+        .hero-img img {
+            max-height:520px; max-width:100%;
+            filter:drop-shadow(0 20px 60px rgba(0,0,0,0.6));
+            transition:transform 0.4s;
+        }
+        .hero-img img:hover { transform:scale(1.04) translateY(-8px); }
 
-            /* 히어로 */
-            .st-hero {
-            min-height: 100vh;
+        /* 스탯 바 */
+        .stats-bar {
+            background:#161616; border-top:1px solid #222; border-bottom:1px solid #222;
+        }
+        .stats-bar .inner {
+            max-width:1200px; margin:0 auto; padding:2.5rem 4rem;
+            display:flex; gap:0;
+        }
+        .stat-item {
+            flex:1; text-align:center; padding:1rem;
+            border-right:1px solid #2a2a2a;
+        }
+        .stat-item:last-child { border-right:none; }
+        .stat-item .num {
+            font-size:2.8rem; font-weight:900; color:#fff; line-height:1;
+        }
+        .stat-item .text {
+            font-size:2rem; font-weight:900; color:#fff; line-height:1;
+        }
+        .stat-item .unit {
+            font-size:1rem; color:rgba(255,255,255,0.4); margin-left:2px;
+        }
+        .stat-item .desc {
+            font-size:0.7rem; letter-spacing:3px; text-transform:uppercase;
+            color:rgba(255,255,255,0.35); margin-top:0.5rem;
+        }
+
+        .detail-section {
+            max-width:1200px; margin:0 auto; padding:6rem 4rem;
+        }
+        .section-label {
+            font-size:0.7rem; letter-spacing:4px; text-transform:uppercase;
+            color:#8B1A1A; margin-bottom:1rem;
+        }
+        .section-title {
+            font-size:2.2rem; font-weight:900; margin:0 0 3rem;
+        }
+
+        /* 맛 노트 */
+        .flavor-grid {
+            display:grid; grid-template-columns:repeat(3,1fr); gap:2rem;
+        }
+        .flavor-card {
+            background:#161616; border:1px solid #222; padding:2rem;
+            border-radius:4px; transition:border-color 0.2s;
+        }
+        .flavor-card:hover { border-color:#8B1A1A; }
+        .flavor-card .icon { font-size:2rem; margin-bottom:1rem; }
+        .flavor-card h4 { font-size:0.8rem; letter-spacing:3px; text-transform:uppercase; color:rgba(255,255,255,0.4); margin-bottom:0.8rem; }
+        .flavor-card p { color:rgba(255,255,255,0.75); line-height:1.8; font-size:0.95rem; }
+
+        @media(max-width:768px){
+            .hero-inner { flex-direction:column; padding:0 2rem; gap:3rem; }
+            .hero-text h1 { font-size:3rem; }
+            .hero::before { font-size:10rem; }
+            .flavor-grid, .pairing-grid { grid-template-columns:1fr; }
+            .stats-bar .inner { flex-wrap:wrap; }
+            .stat-item { flex:0 0 50%; border-right:none; border-bottom:1px solid #2a2a2a; }
+            .detail-section { padding:4rem 2rem; }
+            .hero-arrow { width:40px; height:40px; font-size:1rem; }
+            .hero-arrow-prev { left:1rem; }
+            .hero-arrow-next { right:1rem; }
+        }
+
+        /* Footer */
+        .st-footer {
+            padding: 3rem 8vw;
+            background: #000;
+            border-top: 1px solid rgba(255,255,255,0.06);
             display: flex;
             align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            background: #0a0a0a;
-            }
-            .st-hero-bg {
-                position: absolute; inset: 0;
-                background:
-                    radial-gradient(ellipse 60% 50% at 70% 50%, rgba(139,26,26,0.18) 0%, transparent 70%),
-                    radial-gradient(ellipse 40% 60% at 20% 80%, rgba(139,26,26,0.08) 0%, transparent 60%);
-            }
-            .st-hero-grid {
-                position: absolute; inset: 0;
-                background-image:
-                    linear-gradient(rgba(139,26,26,0.07) 1px, transparent 1px),
-                    linear-gradient(90deg, rgba(139,26,26,0.07) 1px, transparent 1px);
-                background-size: 80px 80px;
-                animation: gridMove 20s linear infinite;
-            }
-            @keyframes gridMove {
-                0%   { transform: translateY(0); }
-                100% { transform: translateY(80px); }
-            }
-            .st-hero-content {
-                position: relative; z-index: 2;
-                text-align: center;
-                padding: 2rem;
-            }
-            .st-eyebrow {
-                font-size: 0.7rem;
-                letter-spacing: 5px;
-                text-transform: uppercase;
-                color: #8B1A1A;
-                margin-bottom: 2rem;
-            }
-            .st-hero-title {
-                font-family: 'Merriweather', serif;
-                font-size: clamp(2.8rem, 7vw, 6rem);
-                font-weight: 900;
-                line-height: 1.05;
-                margin: 0 0 1.5rem;
-                letter-spacing: -1px;
-            }
-            .st-hero-title span { color: #8B1A1A; }
-            .st-hero-sub {
-                color: rgba(255,255,255,0.55);
-                font-size: 1rem;
-                max-width: 460px;
-                margin: 0 auto 3rem;
-                line-height: 1.8;
-            }
-            .tap-device {
-                width: 120px;
-                height: 120px;
-                margin: 0 auto 2.5rem;
-                position: relative;
-            }
-            
-            /* 지도 */
-            .map-section {
-                display: flex; min-height: 520px;
-                border-top: 1px solid #1a1a1a;
-                border-bottom: 1px solid #1a1a1a;
-            }
-            .map-panel {
-                flex: 1.3; position: relative; overflow: hidden;
-            }
-            .map-panel iframe {
-                width: 100%; height: 100%; border: 0; display: block; min-height: 420px;
-                filter: grayscale(30%) contrast(1.05);
-            }
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        .st-footer-brand {
+            font-weight: 700;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+        }
+        .st-footer small {
+            color: rgba(255,255,255,0.3);
+            font-size: 0.75rem;
+        }
+        .st-footer-back {
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.4);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .st-footer-back:hover { color: #fff; }
 
-            .map-panel::before {
-                content: '';
-                position: absolute; top: 0; right: 0; bottom: 0;
-                width: 3px; background: #8B1A1A; z-index: 1;
-            }
-            .info-panel {
-                flex: 1; background: #111;
-                display: flex; flex-direction: column; justify-content: center;
-                padding: 4rem 4.5rem;
-                gap: 0;
-            }
+        @media (max-width: 768px) {
+            .how-inner { flex-direction: column; }
+            .how-left, .how-right { padding: 4rem 6vw; }
+            .features-grid { grid-template-columns: 1fr; }
+            .features-inner { padding: 5rem 6vw; }
+        }
 
-            /* info 소개 */
-            .info-block { margin-bottom: 2.5rem; }
-            .info-block:last-child { margin-bottom: 0; }
-            .info-label {
-                font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase;
-                color: #8B1A1A; margin-bottom: 0.7rem; font-weight: 700;
-                display: flex; align-items: center; gap: 0.5rem;
-            }
-            .info-label::after {
-                content: ''; flex: 1; height: 1px; background: rgba(139,26,26,0.25);
-            }
-            .info-value {
-                font-size: 1.15rem; font-weight: 700; color: #fff;
-                line-height: 1.5; margin-bottom: 0.3rem;
-            }
-            .info-note { font-size: 0.82rem; color: rgba(255,255,255,0.38); }
+        /* SNS */
+        .bottom-bar {
+            border-top: 1px solid #1a1a1a;
+            padding: 3rem;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 2rem;
+        }
+        .sns-row { display: flex; gap: 1.5rem; align-items: center; }
+        .sns-link {
+            color: rgba(255,255,255,0.35); font-size: 1.3rem;
+            transition: color .2s;
+        }
+    </style>
+</head>
+<body>
 
-            .hours-row {
-                display: flex; justify-content: space-between;
-                align-items: baseline; padding: 0.55rem 0;
-                border-bottom: 1px solid rgba(255,255,255,0.05);
-            }
-            .hours-row:last-child { border-bottom: none; }
-            .hours-day { font-size: 0.78rem; color: rgba(255,255,255,0.45); letter-spacing: 1px; }
-            .hours-time { font-size: 0.9rem; color: #fff; font-weight: 700; letter-spacing: 1px; }
-            .hours-closed { color: rgba(255,255,255,0.25); font-style: italic; }
+<!-- 네비 -->
+<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
+    <div class="container px-4 px-lg-5">
+        <a class="navbar-brand" href="index.html#page-top">Art Monster</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ms-auto my-2 my-lg-0">
 
-            /* SNS */
-            .bottom-bar {
-                border-top: 1px solid #1a1a1a;
-                padding: 3rem;
-                display: flex; align-items: center; justify-content: space-between;
-                flex-wrap: wrap; gap: 2rem;
-            }
-            .sns-row { display: flex; gap: 1.5rem; align-items: center; }
-            .sns-link {
-                color: rgba(255,255,255,0.35); font-size: 1.3rem;
-                transition: color .2s;
-            }
+                <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
 
-            /* Event */
-            .eyebrow {
-                font-size: 0.7rem;
-                letter-spacing: 5px;
-                text-transform: uppercase;
-                color: #8B1A1A;
-                margin-bottom: 1.2rem;
-                display: block;
-            }
-            .ev-featured {
-                min-height: 100vh;
-                display: flex;
-                background: #0d0d0d;
-            }
-            .ev-featured-left {
-                flex: 1.1;
-                position: relative;
-                overflow: hidden;
-                background: #111;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                min-height: 50vh;
-            }
-            /* 포스터 */
-            .ev-poster-mock {
-                width: 280px;
-                aspect-ratio: 2/3;
-                background: linear-gradient(145deg, #1a0505 0%, #2d0808 50%, #8B1A1A 100%);
-                border: 1px solid rgba(139,26,26,0.3);
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                position: relative;
-                overflow: hidden;
-            }
-            .ev-poster-mock::before {
-                content: '';
-                position: absolute;
-                top: -30%; left: -30%;
-                width: 160%; height: 160%;
-                background: radial-gradient(circle at 60% 40%, rgba(255,255,255,0.05) 0%, transparent 60%);
-            }
-            .ev-poster-label {
-                font-size: 0.6rem;
-                letter-spacing: 4px;
-                color: rgba(255,255,255,0.4);
-                text-transform: uppercase;
-                margin-bottom: 1.5rem;
-            }
-            .ev-poster-title {
-                font-family: 'Merriweather', serif;
-                font-size: 2rem;
-                font-weight: 900;
-                text-align: center;
-                line-height: 1.1;
-            }
-            .ev-poster-date-tag {
-                position: absolute;
-                bottom: 1.5rem;
-                left: 50%; transform: translateX(-50%);
-                font-size: 0.65rem;
-                letter-spacing: 2px;
-                color: rgba(255,255,255,0.5);
-                white-space: nowrap;
-            }
+                <!-- 맥주 전체 라인업 -->
+                <li class="nav-item dropdown" id="beerNavItem"
+                    onmouseenter="document.getElementById('beerDropdown').style.opacity='1'; document.getElementById('beerDropdown').style.visibility='visible'; document.getElementById('beerDropdown').style.transform='translateY(0)';"
+                    onmouseleave="document.getElementById('beerDropdown').style.opacity='0'; document.getElementById('beerDropdown').style.visibility='hidden'; document.getElementById('beerDropdown').style.transform='translateY(-8px)';">
+                    <a class="nav-link" href="index.html#beer" style="display:inline-flex; align-items:center; gap:0.3rem;">
+                        Beer <span style="font-size:0.6rem; opacity:0.5;">▾</span>
+                    </a>
 
-            .ev-featured-right {
-                flex: 1;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 6rem 8vw 6rem 5rem;
-            }
-            .ev-featured-right h2 {
-                font-family: 'Merriweather', serif;
-                font-size: clamp(2rem, 3.5vw, 3rem);
-                font-weight: 900;
-                line-height: 1.1;
-                margin: 0 0 1rem;
-            }
-            .ev-featured-right p {
-                color: rgba(255,255,255,0.5);
-                font-size: 0.9rem;
-                line-height: 1.9;
-                margin-bottom: 2.5rem;
-                max-width: 400px;
-            }
-            .ev-detail-list {
-                list-style: none;
-                padding: 0; margin: 0 0 2.5rem;
-                display: flex;
-                flex-direction: column;
-                gap: 1rem;
-            }
-            .ev-detail-list li {
-                display: flex;
-                align-items: center;
-                gap: 1rem;
-                font-size: 0.85rem;
-                color: rgba(255,255,255,0.6);
-            }
-            .ev-detail-list li i {
-                color: #8B1A1A;
-                font-size: 1rem;
-                width: 1.2rem;
-                flex-shrink: 0;
-            }
+                    <!-- 맥주 라인업 패널 -->
+                    <div id="beerDropdown" style="
+                        position:absolute; top:100%; right:0;
+                        background:rgba(10,10,10,0.97);
+                        backdrop-filter:blur(12px);
+                        border:1px solid rgba(255,255,255,0.07);
+                        border-top:2px solid #8B1A1A;
+                        padding:1.5rem;
+                        display:flex; gap:1rem;
+                        opacity:0; visibility:hidden;
+                        transform:translateY(-8px);
+                        transition:opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+                        z-index:999; min-width:520px;">
 
-            /* Tasting Class */
-            :root {
-                --red:    #8B1A1A;
-                --red-dk: #6e1414;
-                --gold:   #C9A84C;
-                --bg:     #060606;
-                --bg2:    #0e0e0e;
-                --line:   rgba(255,255,255,0.07);
-                --muted:  rgba(255,255,255,0.38);
-            }
-            .tc-classes {
-                max-width: 1200px; margin: 0 auto;
-                padding: 7rem 4rem;
-            }
-            .tc-classes-header {
-                display: flex; align-items: flex-end; justify-content: space-between;
-                margin-bottom: 4rem; flex-wrap: wrap; gap: 1rem;
-            }
-            .tc-classes-header h2 {
-                font-family: 'Merriweather', serif;
-                font-size: clamp(1.6rem, 3vw, 2.4rem);
-                font-weight: 900; line-height: 1.1;
-            }
-            .tc-class-grid {
-                display: grid;
-                grid-template-columns: repeat(3, 1fr);
-                gap: 1.5rem;
-            }
-            .tc-class-card {
-                border: 3px solid var(--line);
-                padding: 2.5rem 2rem;
-                position: relative; overflow: hidden;
-                transition: border-color 0.25s;
-                cursor: pointer;
-            }
-            .tc-class-card:hover { border-color: var(--red); }
-            .tc-class-card:hover::before { transform: scaleX(1); }
-
-            .tc-class-card .card-num {
-                font-size: 3.5rem; font-weight: 900; line-height: 1;
-                color: rgba(201,168,76,0.12); margin-bottom: 1.5rem;
-            }
-            .tc-class-card .card-level {
-                font-size: 0.6rem; letter-spacing: 4px; text-transform: uppercase;
-                color: var(--red); margin-bottom: 0.8rem;
-            }
-            .tc-class-card h3 {
-                font-size: 1.15rem; font-weight: 700; margin-bottom: 1rem;
-            }
-            .tc-class-card p {
-                color: var(--muted); font-size: 0.88rem; line-height: 1.9;
-                margin-bottom: 1.8rem;
-            }
-            .tc-class-meta {
-                display: flex; flex-direction: column; gap: 0.5rem;
-                padding-top: 1.5rem;
-                border-top: 1px solid var(--line);
-            }
-            .tc-class-meta .meta-row {
-                display: flex; align-items: center; gap: 0.6rem;
-                font-size: 0.75rem; color: rgba(255,255,255,0.5);
-            }
-            .eyebrow {
-                font-size: 0.65rem; letter-spacing: 5px; text-transform: uppercase;
-                color: #8B1A1A; display: block; margin-bottom: 1.5rem;
-            }
-        </style>
-    </head>
-
-    <body id="page-top">
-        <!-- 네비 -->
-        <nav class="navbar navbar-expand-lg navbar-light fixed-top py-3" id="mainNav">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#page-top">Art Monster</a> 
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarResponsive">
-                    <ul class="navbar-nav ms-auto my-2 my-lg-0">
-
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-
-                        <!-- 맥주 전체 라인업 -->
-                        <li class="nav-item dropdown" id="beerNavItem"
-                            onmouseenter="document.getElementById('beerDropdown').style.opacity='1'; document.getElementById('beerDropdown').style.visibility='visible'; document.getElementById('beerDropdown').style.transform='translateY(0)';"
-                            onmouseleave="document.getElementById('beerDropdown').style.opacity='0'; document.getElementById('beerDropdown').style.visibility='hidden'; document.getElementById('beerDropdown').style.transform='translateY(-8px)';">
-                            <a class="nav-link" href="#beer" style="display:inline-flex; align-items:center; gap:0.3rem;">
-                                Beer <span style="font-size:0.6rem; opacity:0.5;">▾</span>
-                            </a>
-
-                            <!-- 맥주 라인업 패널 -->
-                            <div id="beerDropdown" style="
-                                position:absolute; top:100%; right:0;
-                                background:rgba(10,10,10,0.97);
-                                backdrop-filter:blur(12px);
-                                border:1px solid rgba(255,255,255,0.07);
-                                border-top:2px solid #8B1A1A;
-                                padding:1.5rem;
-                                display:flex; gap:1rem;
-                                opacity:0; visibility:hidden;
-                                transform:translateY(-8px);
-                                transition:opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
-                                z-index:999; min-width:520px;">
-
-                                <!-- 맥주 카드 1 -->
-                                <a href="beer-detail-1.html" style="flex:1; text-align:center; text-decoration:none; padding:0.8rem 0.5rem;
-                                    border:1px solid rgba(255,255,255,0.05); transition:border-color 0.2s, background 0.2s;"
-                                    onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.08)'"
-                                    onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='transparent'">
-                                    <img src="assets/img/1.png" alt="Beer 1"
-                                        style="width:60px; height:150px; object-fit:cover; display:block; margin:0 auto 0.6rem;"/>
-                                    <p style="color:#fff; font-size:0.7rem; font-weight:700; margin:0; letter-spacing:1px;">첫사랑의 향기</p>
-                                    <p style="color:#8B1A1A; font-size:0.6rem; margin:0.2rem 0 0; letter-spacing:1px;">First Love's Scent</p>
-                                </a>
-
-                                <!-- 맥주 카드 2 -->
-                                <a href="beer-detail-2.html" style="flex:1; text-align:center; text-decoration:none; padding:0.8rem 0.5rem;
-                                    border:1px solid rgba(255,255,255,0.05); transition:border-color 0.2s, background 0.2s;"
-                                    onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.08)'"
-                                    onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='transparent'">
-                                    <img src="assets/img/2.png" alt="Beer 2"
-                                        style="width:60px; height:150px; object-fit:cover; display:block; margin:0 auto 0.6rem;"/>
-                                    <p style="color:#fff; font-size:0.7rem; font-weight:700; margin:0; letter-spacing:1px;">사랑 범벅</p>
-                                    <p style="color:#8B1A1A; font-size:0.6rem; margin:0.2rem 0 0; letter-spacing:1px;">Endless Love</p>
-                                </a>
-
-                                <!-- 맥주 카드 3 -->
-                                <a href="beer-detail-3.html" style="flex:1; text-align:center; text-decoration:none; padding:0.8rem 0.5rem;
-                                    border:1px solid rgba(255,255,255,0.05); transition:border-color 0.2s, background 0.2s;"
-                                    onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.08)'"
-                                    onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='transparent'">
-                                    <img src="assets/img/3.png" alt="Beer 3"
-                                        style="width:60px; height:150px; object-fit:cover; display:block; margin:0 auto 0.6rem;"/>
-                                    <p style="color:#fff; font-size:0.7rem; font-weight:700; margin:0; letter-spacing:1px;">운짱</p>
-                                    <p style="color:#8B1A1A; font-size:0.6rem; margin:0.2rem 0 0; letter-spacing:1px;">Ultimate Luck</p>
-                                </a>
-
-                                <!-- 맥주 카드 4 -->
-                                <a href="beer-detail-4.html" style="flex:1; text-align:center; text-decoration:none; padding:0.8rem 0.5rem;
-                                    border:1px solid rgba(255,255,255,0.05); transition:border-color 0.2s, background 0.2s;"
-                                    onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.08)'"
-                                    onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='transparent'">
-                                    <img src="assets/img/4.png" alt="Beer 4"
-                                        style="width:60px; height:150px; object-fit:cover; display:block; margin:0 auto 0.6rem;"/>
-                                    <p style="color:#fff; font-size:0.7rem; font-weight:700; margin:0; letter-spacing:1px;">수다 스폰서</p>
-                                    <p style="color:#8B1A1A; font-size:0.6rem; margin:0.2rem 0 0; letter-spacing:1px;">Suda Sponsor</p>
-                                </a>
-
-                                <!-- 맥주 전체 라인업 -->
-                                <a href="beers.html" style="flex:0 0 auto; display:flex; flex-direction:column; align-items:center;
-                                    justify-content:center; padding:0.8rem 1rem; text-decoration:none;
-                                    border:1px solid rgba(139,26,26,0.3); transition:border-color 0.2s, background 0.2s;"
-                                    onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.12)'"
-                                    onmouseout="this.style.borderColor='rgba(139,26,26,0.3)'; this.style.background='transparent'">
-                                    <span style="color:#8B1A1A; font-size:1.2rem;">→</span>
-                                    <p style="color:rgba(255,255,255,0.5); font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; margin:0.4rem 0 0; white-space:nowrap;">ALL</p>
-                                </a>
-                            </div>
-                        </li>
-
-                        <li class="nav-item"><a class="nav-link" href="#smart-tap">Smart tap</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#event">Event</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#tasting-class">Tasting Class</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#membership">Membership</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Masthead-->
-        <header class="masthead" id="mastheadHeader">
-            <div class="container px-4 px-lg-5 h-100">
-                <div class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-                    <div class="col-lg-8 align-self-end">
-                        <h1 class="text-white font-weight-bold">Unleash the Flavor  &nbsp!</h1>
-                        <br>
-                        <hr class="divider">
-                        <br>
-                    </div>
-                    <div class="col-lg-8 align-self-baseline">
-                        <p class="text-white-75 mb-5">아 &nbsp름 &nbsp답 &nbsp게  &nbsp빚 &nbsp고 &nbsp,  &nbsp강 &nbsp렬 &nbsp하 &nbsp게 &nbsp즐 &nbsp기 &nbsp다</p>
-                        
-                        <!-- 버튼; about 섹션과 연결 -->
-                        <a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
-                    </div>
-                </div>
-            </div>
-        </header>
-
-        <!-- About-->
-        <section id="about" style="min-height:100vh; display:flex; align-items:center; padding:0; background:#111;">
-            <div style="display:flex; width:100%; min-height:100vh;">
-
-                <!-- 이미지 -->
-                <div style="flex:1; position:relative; overflow:hidden;">
-                    <img src="assets/img/about.jpg" alt="Brand Image"
-                        style="width:100%; height:100%; object-fit:cover; display:block;"/>
-                </div>
-
-                <!-- 텍스트 -->
-                <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:5rem 6rem;">
-                    <p class="text-uppercase fw-bold small" style="color:#8B1A1A; letter-spacing:3px;">BRAND INTRO</p>
-                    <h2 style="color:#fff; font-size:2.5rem; font-weight:900; margin:1.5rem 0;">ART MONSTER</h2>
-                    <p style="color:rgba(255,255,255,0.65); line-height:1.9; font-size:1.05rem;">맛도 있고 멋도 있다 !<br>부티크한 명품 맥주를 즐겨주세요.<br>아트 몬스터다운 폭발적인 맛의 향연 속에서 특별함을 느껴보세요 !</p>
-                    <div style="margin-top:2rem;">
-                        <a class="btn btn-outline-primary" href="brand.html">Brand Story →</a>
-                        <br><br>
-                        <a class="btn btn-outline-primary" href="brewery.html">Brewery Story →</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Beer -->
-        <section id="beer" style="background:#000; padding:0; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
-            <div id="beerSlider" style="position:relative; overflow:hidden; min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
-
-                <!-- 맥주 UI 카드 1 -->
-                <div class="beer-slide" style="display:flex; align-items:center; padding:3rem 4rem; min-height:100vh; background:#791627; position:relative; transition: opacity 0.3s ease, transform 0.3s ease;">
-                    <div style="position:absolute; top:2rem; right:4rem; font-size:5rem; font-weight:900; color:rgba(255,255,255,0.15); line-height:1;">
-                        01<span style="font-size:2rem;">/04</span>
-                    </div>
-                    <div style="flex:1; padding-left:3rem;">
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.75rem; letter-spacing:3px; text-transform:uppercase;">FIRST LOVE'S SCENT</p>
-                        <h2 style="color:#fff; font-size:3rem; font-weight:900; line-height:1.1; margin-top:1rem;">첫사랑의 향기</h2>
-                    </div>
-                    <div style="flex:1; text-align:center;">
-                        <a href="beer-detail-1.html">
+                        <a href="beer-detail-1.html" style="flex:1; text-align:center; text-decoration:none; padding:0.8rem 0.5rem;
+                            border:1px solid rgba(255,255,255,0.05); transition:border-color 0.2s, background 0.2s;"
+                            onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.08)'"
+                            onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='transparent'">
                             <img src="assets/img/1.png" alt="Beer 1"
-                                style="max-height:350px; max-width:100%; cursor:pointer; transition:transform 0.3s;"
-                                onmouseover="this.style.transform='scale(1.05)'"
-                                onmouseout="this.style.transform='scale(1)'" />
+                                style="width:60px; height:150px; object-fit:cover; display:block; margin:0 auto 0.6rem;"/>
+                            <p style="color:#fff; font-size:0.7rem; font-weight:700; margin:0; letter-spacing:1px;">첫사랑의 향기</p>
+                            <p style="color:#8B1A1A; font-size:0.6rem; margin:0.2rem 0 0; letter-spacing:1px;">First Love's Scent</p>
                         </a>
-                    </div>
-                    <div style="flex:1; padding-left:3rem;">
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">STYLE</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:1rem; margin-bottom:1rem;">Wheat</p>
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">ABV</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:1rem; margin-bottom:1rem;">5.6%</p>
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">AROMA</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem;">오렌지, 귤, 시트러스 과일향, 코리엔더 향</p>
-                    </div>
-                </div>
 
-                <!-- 맥주 UI 카드 2 -->
-                <div class="beer-slide" style="display:none; align-items:center; padding:3rem 6rem; min-height:100vh; background:#977c26; position:relative; transition: opacity 0.3s ease, transform 0.3s ease;">
-                    <div style="position:absolute; top:2rem; right:4rem; font-size:5rem; font-weight:900; color:rgba(255,255,255,0.15); line-height:1;">
-                        02<span style="font-size:2rem;">/04</span>
-                    </div>
-                    <div style="flex:1; padding-left:3rem;">
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.75rem; letter-spacing:3px; text-transform:uppercase;">ENDLESS LOVE</p>
-                        <h2 style="color:#fff; font-size:3rem; font-weight:900; line-height:1.1; margin-top:1rem;">사랑 범벅</h2>
-                    </div>
-                    <div style="flex:1; text-align:center;">
-                        <a href="beer-detail-2.html">
+                        <a href="beer-detail-2.html" style="flex:1; text-align:center; text-decoration:none; padding:0.8rem 0.5rem;
+                            border:1px solid rgba(255,255,255,0.05); transition:border-color 0.2s, background 0.2s;"
+                            onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.08)'"
+                            onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='transparent'">
                             <img src="assets/img/2.png" alt="Beer 2"
-                                style="max-height:350px; max-width:100%; cursor:pointer; transition:transform 0.3s;"
-                                onmouseover="this.style.transform='scale(1.05)'"
-                                onmouseout="this.style.transform='scale(1)'" />
+                                style="width:60px; height:150px; object-fit:cover; display:block; margin:0 auto 0.6rem;"/>
+                            <p style="color:#fff; font-size:0.7rem; font-weight:700; margin:0; letter-spacing:1px;">사랑 범벅</p>
+                            <p style="color:#8B1A1A; font-size:0.6rem; margin:0.2rem 0 0; letter-spacing:1px;">Endless Love</p>
                         </a>
-                    </div>
-                    <div style="flex:1; padding-left:3rem;">
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">STYLE</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:1rem; margin-bottom:1rem;">Dunkel</p>
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">ABV</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:1rem; margin-bottom:1rem;">6.0%</p>
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">AROMA</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem;">피넛버터, 초콜릿, 커피, 카라멜, 로스티</p>
-                    </div>
-                </div>
 
-                <!-- 맥주 UI 카드 3 -->
-                <div class="beer-slide" style="display:none; align-items:center; padding:3rem 6rem; min-height:100vh; background:#1f324b; position:relative; transition: opacity 0.3s ease, transform 0.3s ease;">
-                    <div style="position:absolute; top:2rem; right:4rem; font-size:5rem; font-weight:900; color:rgba(255,255,255,0.15); line-height:1;">
-                        03<span style="font-size:2rem;">/04</span>
-                    </div>
-                    <div style="flex:1; padding-left:3rem;">
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.75rem; letter-spacing:3px; text-transform:uppercase;">ULTIMATE LUCK</p>
-                        <h2 style="color:#fff; font-size:3rem; font-weight:900; line-height:1.1; margin-top:1rem;">운짱</h2>
-                    </div>
-                    <div style="flex:1; text-align:center;">
-                        <a href="beer-detail-3.html">
+                        <a href="beer-detail-3.html" style="flex:1; text-align:center; text-decoration:none; padding:0.8rem 0.5rem;
+                            border:1px solid rgba(255,255,255,0.05); transition:border-color 0.2s, background 0.2s;"
+                            onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.08)'"
+                            onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='transparent'">
                             <img src="assets/img/3.png" alt="Beer 3"
-                                style="max-height:350px; max-width:100%; cursor:pointer; transition:transform 0.3s;"
-                                onmouseover="this.style.transform='scale(1.05)'"
-                                onmouseout="this.style.transform='scale(1)'" />
+                                style="width:60px; height:150px; object-fit:cover; display:block; margin:0 auto 0.6rem;"/>
+                            <p style="color:#fff; font-size:0.7rem; font-weight:700; margin:0; letter-spacing:1px;">운짱</p>
+                            <p style="color:#8B1A1A; font-size:0.6rem; margin:0.2rem 0 0; letter-spacing:1px;">Ultimate Luck</p>
                         </a>
-                    </div>
-                    <div style="flex:1; padding-left:3rem;">
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">STYLE</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:1rem; margin-bottom:1rem;">Lager</p>
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">ABV</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:1rem; margin-bottom:1rem;">5.5%</p>
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">AROMA</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem;">허브향, 옅은 쓴 향, 견과류, 곡물</p>
-                    </div>
-                </div>
 
-                <!-- 맥주 UI 카드 4 -->
-                <div class="beer-slide" style="display:none; align-items:center; padding:3rem 6rem; min-height:100vh; background:#214827; position:relative; transition: opacity 0.3s ease, transform 0.3s ease;">
-                    <div style="position:absolute; top:2rem; right:4rem; font-size:5rem; font-weight:900; color:rgba(255,255,255,0.15); line-height:1;">
-                        04<span style="font-size:2rem;">/04</span>
-                    </div>
-                    <div style="flex:1; padding-left:3rem;">
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.75rem; letter-spacing:3px; text-transform:uppercase;">SUDA SPONSOR</p>
-                        <h2 style="color:#fff; font-size:3rem; font-weight:900; line-height:1.1; margin-top:1rem;">수다 스폰서</h2>
-                    </div>
-                    <div style="flex:1; text-align:center;">
-                        <a href="beer-detail-4.html">
+                        <a href="beer-detail-4.html" style="flex:1; text-align:center; text-decoration:none; padding:0.8rem 0.5rem;
+                            border:1px solid rgba(255,255,255,0.05); transition:border-color 0.2s, background 0.2s;"
+                            onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.08)'"
+                            onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='transparent'">
                             <img src="assets/img/4.png" alt="Beer 4"
-                                style="max-height:350px; max-width:100%; cursor:pointer; transition:transform 0.3s;"
-                                onmouseover="this.style.transform='scale(1.05)'"
-                                onmouseout="this.style.transform='scale(1)'" />
+                                style="width:60px; height:150px; object-fit:cover; display:block; margin:0 auto 0.6rem;"/>
+                            <p style="color:#fff; font-size:0.7rem; font-weight:700; margin:0; letter-spacing:1px;">수다 스폰서</p>
+                            <p style="color:#8B1A1A; font-size:0.6rem; margin:0.2rem 0 0; letter-spacing:1px;">Suda Sponsor</p>
+                        </a>
+
+                        <a href="beers.html" style="flex:0 0 auto; display:flex; flex-direction:column; align-items:center;
+                            justify-content:center; padding:0.8rem 1rem; text-decoration:none;
+                            border:1px solid rgba(139,26,26,0.3); transition:border-color 0.2s, background 0.2s;"
+                            onmouseover="this.style.borderColor='#8B1A1A'; this.style.background='rgba(139,26,26,0.12)'"
+                            onmouseout="this.style.borderColor='rgba(139,26,26,0.3)'; this.style.background='transparent'">
+                            <span style="color:#8B1A1A; font-size:1.2rem;">→</span>
+                            <p style="color:rgba(255,255,255,0.5); font-size:0.6rem; letter-spacing:2px; text-transform:uppercase; margin:0.4rem 0 0; white-space:nowrap;">ALL</p>
                         </a>
                     </div>
-                    <div style="flex:1; padding-left:3rem;">
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">STYLE</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:1rem; margin-bottom:1rem;">Pale Ale</p>
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">ABV</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem; border-bottom:1px solid rgba(255,255,255,0.2); padding-bottom:1rem; margin-bottom:1rem;">5.9%</p>
-                        <p style="color:rgba(255,255,255,0.5); font-size:0.7rem; letter-spacing:2px; text-transform:uppercase;">AROMA</p>
-                        <p style="color:#fff; font-weight:700; font-size:1.1rem;">자몽, 레몬, 백포도 향, 꽃, 곡물</p>
-                    </div>
-                </div>
+                </li>
 
-                <!-- 이전/다음 버튼 -->
-                <button onclick="moveBeerSlide(-1)"
-                    style="position:absolute; left:1.5rem; top:50%; transform:translateY(-50%); background:none; border:none; color:#fff; font-size:2.5rem; line-height:1; cursor:pointer; z-index:10; text-shadow:0 0 8px rgba(0,0,0,0.5);">‹</button>
-                <button onclick="moveBeerSlide(1)"
-                    style="position:absolute; right:1.5rem; top:50%; transform:translateY(-50%); background:none; border:none; color:#fff; font-size:2.5rem; line-height:1; cursor:pointer; z-index:10; text-shadow:0 0 8px rgba(0,0,0,0.5);">›</button>
-        </section>
+                <li class="nav-item"><a class="nav-link" href="index.html#smart-tap">Smart tap</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#event">Event</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#tasting-class">Tasting Class</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#membership">Membership</a></li>
+                <li class="nav-item"><a class="nav-link" href="index.html#contact">Contact</a></li>
 
-        <!-- Smart tap -->
-        <section class="st-hero" id="smart-tap">
-            <div class="st-hero-bg"></div>
-            <div class="st-hero-grid"></div>
-            <div class="st-hero-content">
-                <p class="st-eyebrow">Art Monster · Technology</p>
-                <h1 class="st-hero-title">SMART<br><span>TAP</span><br>SYSTEM</h1>
-                <p class="st-hero-sub">NFC 밴드 하나로 입장부터 주문, 정산까지.<br>기다림 없이 맥주를 즐기는 새로운 방식.</p>
-                <a class="btn btn-primary btn-xl" href="smart-tap.html">HOW ? →</a>
-            </div>
-        </section>
-
-        <!-- Event -->
-        <section id="event" class="ev-featured" id="featured">
-            <!-- 포스터 -->
-            <div class="ev-featured-left">
-                <div class="ev-poster-mock">
-                    <div class="ev-poster-label">Art Monster Presents</div>
-                    <div class="ev-poster-title">BREWERY<br>NIGHT<br>Vol.7</div>
-                    <div class="ev-poster-date-tag">Jun 28, 2026 · 20:00</div>
-                </div>
-            </div>
-
-            <!-- 소개 -->
-            <div class="ev-featured-right">
-                <span class="eyebrow">Event</span>
-                <h2>브루어리 나이트<br>Vol.7</h2>
-                <p>
-                    Art Monster가 직접 큐레이션한 시즌 한정 탭 라인업과 라이브 공연이 함께합니다.
-                    양조팀이 직접 무대에 올라 이번 시즌 레시피를 공개하는 특별한 저녁.
-                    탭 한 잔을 손에 들고, 그 맛이 만들어진 이야기를 들을 수 있는 유일한 자리입니다.
-                </p>
-                <ul class="ev-detail-list">
-                    <li><i class="bi bi-calendar3"></i> 2026년 6월 28일 (토)</li>
-                    <li><i class="bi bi-clock"></i> 20:00 — 01:00</li>
-                    <li><i class="bi bi-geo-alt"></i> Art Monster 메인 홀 · 서울 강남구 삼성동</li>
-                    <li><i class="bi bi-people"></i> 정원 30명</li>
-
-                    <!-- 버튼; event 페이지와 연결 -->
-                    <div style="margin-top:2rem;">
-                        <a class="btn btn-primary btn-xl" href="event.html">More →</a>
-                    </div>
-                </ul>
-            </div>
-        </section>
-
-        <!-- tasting-class -->
-        <section id="tasting-class" class="tc-classes">
-            <div class="tc-classes-header">
-                <div>
-                    <span class="eyebrow">Tasting Class</span>
-                    <h2>3가지 레벨의<br>테이스팅 클래스</h2>
-                </div>
-                <!-- 버튼; 테이스팅 클래스 페이지와 연결 -->
-                <div style="margin-top:2rem;">
-                    <a class="btn btn-primary btn-xl" href="tasting-class.html">More →</a>
-                </div>
-            </div>
-
-            <div class="tc-class-grid">
-                <!-- 클래스 1 -->
-                <div class="tc-class-card">
-                    <div class="card-num">01</div>
-                    <div class="card-level">Level 01 · Beginner</div>
-                    <h3>비어 인트로덕션</h3>
-                    <p>
-                        크래프트 맥주를 처음 접하는 분을 위한 클래스.
-                        맥주의 4가지 원료(물 & 몰트 & 홉 & 효모)부터
-                        IPA, 라거, 스타우트 등 주요 스타일을
-                        직접 비교 테이스팅하며 배웁니다.
-                    </p>
-                    <div class="tc-class-meta">
-                        <div class="meta-row"><i class="bi bi-clock"></i> 2시간 30분</div>
-                        <div class="meta-row"><i class="bi bi-cup"></i> 6종 테이스팅</div>
-                        <div class="meta-row"><i class="bi bi-people"></i> 최대 12명</div>
-                        <div class="meta-row"><i class="bi bi-cash"></i> 45,000원</div>
-                    </div>
-                </div>
-
-                <!-- 클래스 2 -->
-                <div class="tc-class-card">
-                    <div class="card-num">02</div>
-                    <div class="card-level">Level 02 · Intermediate</div>
-                    <h3>홉 & 몰트 딥다이브</h3>
-                    <p>
-                        맥주 스타일을 이미 아는 분을 위한 심화 클래스.
-                        홉의 품종별 아로마 차이, 몰트 로스팅 레벨에 따른
-                        풍미 변화를 집중적으로 분석합니다.
-                        블라인드 테이스팅 세션 포함.
-                    </p>
-                    <div class="tc-class-meta">
-                        <div class="meta-row"><i class="bi bi-clock"></i> 3시간</div>
-                        <div class="meta-row"><i class="bi bi-cup"></i> 8종 테이스팅</div>
-                        <div class="meta-row"><i class="bi bi-people"></i> 최대 10명</div>
-                        <div class="meta-row"><i class="bi bi-cash"></i> 70,000원</div>
-                    </div>
-                </div>
-
-                <!-- 클래스 3 -->
-                <div class="tc-class-card">
-                    <div class="card-num">03</div>
-                    <div class="card-level">Level 03 · Master</div>
-                    <h3>브루어와 함께하는 마스터클래스</h3>
-                    <p>
-                        아트몬스터 헤드 브루어가 직접 진행하는
-                        소수 정예 마스터클래스. 실제 레시피 공개 및
-                        페어링 설계, 수료 후 개인 테이스팅 노트
-                        제작까지 포함됩니다.
-                    </p>
-                    <div class="tc-class-meta">
-                        <div class="meta-row"><i class="bi bi-clock"></i> 3시간 30분</div>
-                        <div class="meta-row"><i class="bi bi-cup"></i> 10종 + 페어링</div>
-                        <div class="meta-row"><i class="bi bi-people"></i> 최대 8명</div>
-                        <div class="meta-row"><i class="bi bi-cash"></i> 120,000원</div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Membership -->
-        <section id="membership" style="background:#181818; padding:7rem 0; scroll-margin-top:-100px; position:relative; overflow:hidden;">
-            <div class="container px-4 px-lg-5" style="position:relative; z-index:1;">
-
-                <!-- 섹션 헤더 -->
-                <div class="text-center mb-5">
-                    <h2 style="color:#fff; font-size:2.8rem; font-weight:900; margin:1rem 0 0.5rem; line-height:1.15;">
-                        Monster <span style="color:#8B1A1A;">Club</span>
-                    </h2>
-                    <p style="color:rgba(255,255,255,0.45); font-size:1rem; max-width:520px; margin:1rem auto 0; line-height:1.8;">
-                        마셔라, 즐겨라, 환영하라 ! <br> 멤버십 가입으로 다양한 혜택과 이벤트에 참여하세요.
-                    </p>
-                </div>
-
-                <!-- 멤버십 티어 -->
-                <div class="row g-4 justify-content-center mb-5">
-
-                    <!-- REGULAR -->
-                    <div class="col-lg-4 col-md-6">
-                        <div style="border:1px solid rgba(255,255,255,0.08); padding:2.5rem 2rem;
-                            background:#111; position:relative; transition:border-color 0.3s, transform 0.3s;"
-                            onmouseover="this.style.borderColor='rgba(139,26,26,0.5)'; this.style.transform='translateY(-6px)'"
-                            onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
-                            <h3 style="color:#7e1818; font-weight:900; font-size:1.6rem; margin-bottom:1.5rem;">REGULAR</h3>
-                            <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem;">
-                                <ul style="list-style:none; padding:0; margin:0; color:rgba(255,255,255,0.6); font-size:0.9rem; line-height:2.2;">
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> 멤버 전용 탭 접근권</li>
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> 월간 뉴스레터</li>
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> 생일 맥주 1잔 증정</li>
-                                </ul>
-                            </div>
-                            <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.07);">
-                                <p style="color:#9b4040; font-size:1.5rem; font-weight:900; margin:0;">₩ 9,900<span style="font-size:0.8rem; font-weight:400; color:rgba(255,255,255,0.4)"> / 월</span></p>
-                                <p style="color:rgba(255,255,255,0.3); font-size:0.7rem; letter-spacing:1px; margin-top:0.3rem;">MONTHLY</p>
-                            </div>
-                            <div style="margin-top:1.5rem;">
-                                <a href="membership-regular.html" style="display:block; text-align:center; padding:1.2rem 0.8rem;
-                                    border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); text-decoration:none;
-                                    font-size:0.75rem; letter-spacing:2px; text-transform:uppercase;
-                                    transition:border-color 0.2s, color 0.2s, background 0.2s;"
-                                    onmouseover="this.style.borderColor='#8B1A1A'; this.style.color='#fff'; this.style.background='rgba(139,26,26,0.12)'"
-                                    onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='rgba(255,255,255,0.7)'; this.style.background='transparent'">
-                                    Join Regular
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Monster -->
-                    <div class="col-lg-4 col-md-6">
-                        <div style="border:1px solid rgba(31, 31, 31, 0.08); padding:2.5rem 2rem;
-                            background:#111; position:relative; transition:border-color 0.3s, transform 0.3s;"
-                            onmouseover="this.style.borderColor='rgba(139,26,26,0.5)'; this.style.transform='translateY(-6px)'"
-                            onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
-                            <h3 style="color:#8B1A1A; font-weight:900; font-size:1.6rem; margin-bottom:1.5rem;">MONSTER</h3>
-                            <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem;">
-                                <ul style="list-style:none; padding:0; margin:0; color:rgba(255,255,255,0.6); font-size:0.9rem; line-height:2.2;">
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> REGULAR 혜택 전체 포함</li>
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> 신작 맥주 우선 시음</li>
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> 월 1회 테이스팅 클래스 무료</li>
-                                </ul>
-                            </div>
-                            <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.07);">
-                                <p style="color:#9b4040; font-size:1.5rem; font-weight:900; margin:0;">₩ 19,000<span style="font-size:0.8rem; font-weight:400; color:rgba(255,255,255,0.4)"> / 월</span></p>
-                                <p style="color:rgba(255,255,255,0.3); font-size:0.7rem; letter-spacing:1px; margin-top:0.3rem;">MONTHLY</p>
-                            </div>
-                            <div style="margin-top:1.5rem;">
-                                <a href="membership-monster.html" style="display:block; text-align:center; padding:1.2rem 0.8rem;
-                                    border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); text-decoration:none;
-                                    font-size:0.75rem; letter-spacing:2px; text-transform:uppercase;
-                                    transition:border-color 0.2s, color 0.2s, background 0.2s;"
-                                    onmouseover="this.style.borderColor='#8B1A1A'; this.style.color='#fff'; this.style.background='rgba(139,26,26,0.12)'"
-                                    onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='rgba(255,255,255,0.7)'; this.style.background='transparent'">
-                                    Join Monster
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- LEGEND -->
-                    <div class="col-lg-4 col-md-6">
-                        <div style="border:1px solid rgba(255,255,255,0.08); padding:2.5rem 2rem;
-                            background:#111; position:relative; transition:border-color 0.3s, transform 0.3s;"
-                            onmouseover="this.style.borderColor='rgba(139,26,26,0.5)'; this.style.transform='translateY(-6px)'"
-                            onmouseout="this.style.borderColor='rgba(255,255,255,0.08)'; this.style.transform='translateY(0)'">
-                            <h3 style="color:#8B1A1A; font-weight:900; font-size:1.6rem; margin-bottom:1.5rem;">LEGEND</h3>
-                            <div style="border-top:1px solid rgba(255,255,255,0.07); padding-top:1.5rem;">
-                                <ul style="list-style:none; padding:0; margin:0; color:rgba(255,255,255,0.6); font-size:0.9rem; line-height:2.2;">
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> MONSTER 혜택 전체 포함</li>
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> 프라이빗 이벤트 초청</li>
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> 한정 레이블 우선 구매</li>
-                                    <li><span style="color:#8B1A1A; margin-right:0.6rem;">✦</span> 연간 브루어리 투어</li>
-                                </ul>
-                            </div>
-                            <div style="margin-top:2rem; padding-top:1.5rem; border-top:1px solid rgba(255,255,255,0.07);">
-                                <p style="color:#9b4040; font-size:1.5rem; font-weight:900; margin:0;">₩ 49,000<span style="font-size:0.8rem; font-weight:400; color:rgba(255,255,255,0.4)"> / 월</span></p>
-                                <p style="color:rgba(255,255,255,0.3); font-size:0.7rem; letter-spacing:1px; margin-top:0.3rem;">MONTHLY</p>
-                            </div>
-                            <div style="margin-top:1.5rem;">
-                                <a href="membership-legend.html" style="display:block; text-align:center; padding:1.2rem 0.8rem;
-                                    border:1px solid rgba(255,255,255,0.2); color:rgba(255,255,255,0.7); text-decoration:none;
-                                    font-size:0.75rem; letter-spacing:2px; text-transform:uppercase;
-                                    transition:border-color 0.2s, color 0.2s, background 0.2s;"
-                                    onmouseover="this.style.borderColor='#8B1A1A'; this.style.color='#fff'; this.style.background='rgba(139,26,26,0.12)'"
-                                    onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.color='rgba(255,255,255,0.7)'; this.style.background='transparent'">
-                                    Join Legend
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact-->
-        <section class="page-section" id="contact">
-            <div class="container px-4 px-lg-5">
-                <div class="row gx-4 gx-lg-5 justify-content-center">
-                    <div class="col-lg-8 col-xl-6 text-center">
-                        <div style="flex:1; display:flex; flex-direction:column; justify-content:center; padding:5rem 6rem;">
-                            <p class="text-uppercase fw-bold small" style="color:#8B1A1A; letter-spacing:3px;">Find us</p>
-                            <h2 style="color:#fff; font-size:2.5rem; font-weight:900; margin:1.5rem 0;">Contact</h2>
-                            <hr>
-                            <!-- 버튼; visit 페이지와 연결 -->
-                            <div style="margin-top:2rem;">
-                                <a class="btn btn-primary btn-xl" href="visit.html">Visit →</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- 지도 -->
-                <div class="map-section">
-                <div class="map-panel">
-                    <iframe
-                        src="https://www.google.com/maps?q=서울+강남구+삼성동+157-17&output=embed"
-                        allowfullscreen="" loading="lazy">
-                    </iframe>
-                </div>
-            </div>
-
-            <!-- info -->
-            <div class="info-panel">
-
-                <div class="info-block">
-                    <div class="info-label">위치</div>
-                    <div class="info-value">서울특별시 강남구 삼성동 157-17</div>
-                    <a class="map-btn" href="https://map.kakao.com/link/search/서울 강남구 삼성동 157-17" target="_blank"></a>
-                </div>
-
-                <div class="info-block">
-                    <div class="info-label">영업시간</div>
-                    <div class="hours-row">
-                        <span class="hours-day">MON — FRI</span>
-                        <span class="hours-time">16:00 – 24:00</span>
-                    </div>
-                    <div class="hours-row">
-                        <span class="hours-day">SATURDAY</span>
-                        <span class="hours-time">16:00 – 23:00</span>
-                    </div>
-                    <div class="hours-row">
-                        <span class="hours-day">SUNDAY</span>
-                        <span class="hours-time hours-closed">Closed</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- SNS -->
-        <div class="bottom-bar" style="max-width:100%;">
-            <div>
-                <p style="font-size:.62rem; letter-spacing:4px; text-transform:uppercase; color:#8B1A1A; margin-bottom:.6rem;">Follow Us</p>
-                <div class="sns-row">
-                    <a href="https://www.facebook.com/artmonsterbrew/" target="_blank" class="sns-link"><i class="bi bi-facebook"></i></a>
-                    <a href="https://www.instagram.com/artmonsterbrewery/" class="sns-link"><i class="bi bi-instagram"></i></a>
-                    <a href="https://www.youtube.com/@artmonster3414" target="_blank" class="sns-link"><i class="bi bi-youtube"></i></a>
-                </div>
-            </div>
-            <div style="text-align:right;">
-                <p style="font-size:.72rem; color:rgba(255,255,255,0.35); margin-bottom:.4rem;">서울 강남구 삼성동 157-17</p>
-                <p style="font-size:.72rem; color:rgba(255,255,255,0.2);">artmonster@example.com</p>
-            </div>
+            </ul>
         </div>
+    </div>
+</nav>
 
-        <!-- Footer-->
-        <footer class="py-5" style="background: linear-gradient(to top, #000 60%, transparent 100%);">
-            <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2026 - Art Technology</div></div>
-        </footer>
+<!-- 페이지 전환 화살표 -->
+<button onclick="location.href='beer-detail-4.html'"
+    style="position:fixed; left:1.5rem; top:50%; transform:translateY(-50%);
+    background:none; border:none; color:rgba(255,255,255,0.4); font-size:3rem;
+    cursor:pointer; z-index:90; line-height:1; padding:1rem;">‹</button>
+<button onclick="location.href='beer-detail-2.html'"
+    style="position:fixed; right:1.5rem; top:50%; transform:translateY(-50%);
+    background:none; border:none; color:rgba(255,255,255,0.4); font-size:3rem;
+    cursor:pointer; z-index:90; line-height:1; padding:1rem; transition:color .2s;"
+    onmouseover="this.style.color='#fff'" onmouseout="this.style.color='rgba(255,255,255,0.4)'">›</button>
 
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- SimpleLightbox plugin JS-->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-        <!-- Core theme JS-->
-        <script src="js/scripts.js"></script>
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-        <script>
-            let currentBeer = 0;
-            const beerSlides = document.querySelectorAll('.beer-slide');
-            const bgColors = ['#9B1C31', '#D4AF37', '#1A2A40', '#3A7D44'];
+<!-- 히어로 -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="hero-text">
+            <p class="label">FIRST LOVE'S SCENT</p>
+            <h1>첫사랑의 향기</h1>
+            <span class="style-tag">Wheat</span>
+            <p class="tagline">상큼하고 향긋한 벨기에 밀맥주입니다. 자꾸만 떠올리고 싶은 첫사랑의 풋풋하고 순수한 모습 그대로의 맥주입니다.</p>
+        </div>
+        <div class="hero-img">
+            <img src="assets/img/1.png" alt="Beer Name 01"/>
+        </div>
+    </div>
+</section>
 
-            <!-- 맥주 슬라이드 이동 함수 -->
-            function moveBeerSlide(dir) {
-                const current = beerSlides[currentBeer];
-                current.style.opacity = '0';
-                current.style.transform = 'translateX(' + (dir > 0 ? '-60px' : '60px') + ')';
+<!-- 스탯 바 -->
+<div class="stats-bar">
+    <div class="inner">
+        <div class="stat-item">
+            <div class="num">6.0<span class="unit">%</span></div>
+            <div class="desc">ABV</div>
+            <div class="gauge-wrap"><div class="gauge-fill" style="width:65%;"></div></div>
+        </div>
+        <div class="stat-item">
+            <div class="num">11<span class="unit"> IBU</span></div>
+            <div class="desc">BITTERNESS</div>
+            <div class="gauge-wrap"><div class="gauge-fill" style="width:65%;"></div></div>
+        </div>
+        <div class="stat-item">
+            <div class="text">GOLD</div>
+            <div class="desc">COLOR</div>
+            <div class="gauge-wrap"><div class="gauge-fill" style="width:30%;"></div></div>
+        </div>
+        <div class="stat-item">
+            <div class="text">MEDIUM</div>
+            <div class="desc">MOUTTHFEEL</div>
+            <div class="gauge-wrap"><div class="gauge-fill" style="width:45%;"></div></div>
+        </div>
+    </div>
+</div>
 
-                setTimeout(() => {
-                    current.style.display = 'none';
-                    current.style.transform = 'translateX(0)';
-                    currentBeer = (currentBeer + dir + beerSlides.length) % beerSlides.length;
-                    const next = beerSlides[currentBeer];
-                    next.style.display = 'flex';
-                    next.style.opacity = '0';
-                    next.style.transform = 'translateX(' + (dir > 0 ? '60px' : '-60px') + ')';
-                    setTimeout(() => {
-                        next.style.opacity = '1';
-                        next.style.transform = 'translateX(0)';
-                        document.getElementById('beerSlider').style.background = bgColors[currentBeer];
-                        document.getElementById('beerHeader').style.background = bgColors[currentBeer];
-                    }, 30);
-                }, 300);
-            }
-        </script>
+<!-- 맛 노트 -->
+<div class="detail-section">
+    <p class="section-label">Tasting Notes</p>
+    <h2 class="section-title">맛의 프로파일</h2>
+    <div class="flavor-grid">
+        <div class="flavor-card">
+            <div class="icon">🍊</div>
+            <h4>Aroma</h4>
+            <p>상큼한 오렌지와 귤, 시트러스 과일향에 코리앤더의 향긋함이 더해져 첫사랑의 풋풋함을 떠올리게 합니다.</p>
+        </div>
+        <div class="flavor-card">
+            <div class="icon">🍋</div>
+            <h4>Flavor</h4>
+            <p>달콤한 오렌지 껍질의 은은함과 제주 감귤쥬스의 산뜻함이 잘 어우러지며, 효모가 가라앉아 있어 흔들어 마시면 더 풍부한 풍미를 느낄 수 있습니다.</p>
+        </div>
+        <div class="flavor-card">
+            <div class="icon">💧</div>
+            <h4>Mouthfeel & Finish</h4>
+            <p>중간 바디감에 탄산이 강하지 않아 부드럽게 느껴지며, 목넘김이 훌륭해 부담 없이 즐길 수 있는 맥주입니다.</p>
+        </div>
+    </div>
+</div>
 
-        <!-- 헤더 이미지 슬라이드 -->
-        <script>
-            const headerImages = [
-                'assets/img/header.jpg',
-                'assets/img/header2.jpg',
-                'assets/img/header3.jpg'
-            ];
-            let currentHeader = 0;
-            const header = document.getElementById('mastheadHeader');
+<!-- SNS  -->
+<div class="bottom-bar" style="max-width:100%;">
+    <div>
+        <p style="font-size:.62rem; letter-spacing:4px; text-transform:uppercase; color:#8B1A1A; margin-bottom:.6rem;">Follow Us</p>
+        <div class="sns-row">
+            <a href="https://www.facebook.com/artmonsterbrew/" target="_blank" class="sns-link"><i class="bi bi-facebook"></i></a>
+            <a href="https://www.instagram.com/artmonsterbrewery/" class="sns-link"><i class="bi bi-instagram"></i></a>
+            <a href="https://www.youtube.com/@artmonster3414" target="_blank" class="sns-link"><i class="bi bi-youtube"></i></a>
+        </div>
+    </div>
+    <div style="text-align:right;">
+        <p style="font-size:.72rem; color:rgba(255,255,255,0.35); margin-bottom:.4rem;">서울 강남구 삼성동 157-17</p>
+        <p style="font-size:.72rem; color:rgba(255,255,255,0.2);">artmonster@example.com</p>
+    </div>
+</div>
 
-            setInterval(() => {
-                currentHeader = (currentHeader + 1) % headerImages.length;
-                header.style.transition = 'opacity 0.8s ease';
-                header.style.opacity = '0';
-                setTimeout(() => {
-                    header.style.backgroundImage =
-                        'linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url("' + headerImages[currentHeader] + '")';
-                    header.style.opacity = '1';
-                }, 800);
-            }, 4000); 
-        </script>
-    </body>
+<!-- Footer-->
+<footer class="py-5" style="background: linear-gradient(to top, #000 60%, transparent 100%);">
+    <div class="container px-4 px-lg-5"><div class="small text-center text-muted">Copyright &copy; 2026 - Art Technology</div></div>
+</footer>
+
+</body>
 </html>
